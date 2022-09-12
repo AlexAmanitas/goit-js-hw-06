@@ -6,7 +6,3 @@ nameInput.addEventListener('input', event => {
   nameOutput.textContent = event.currentTarget.value;
   if (event.currentTarget.value === '') nameOutput.textContent = 'Anonymous';
 });
-
-// nameInput.addEventListener('blur', event => {
-//   nameOutput.textContent = event.currentTarget.value;
-// });
