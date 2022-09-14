@@ -7,37 +7,23 @@ const numberInput = controlsPanel.children[0];
 const createButton = controlsPanel.children[1];
 const destroyButton = controlsPanel.children[2];
 const boxes = document.querySelector('#boxes');
+let amount = 0;
 
-console.log(controlsPanel);
-console.log(boxes, numberInput, createButton, destroyButton);
-let numberOfBox = 0;
+numberInput.addEventListener('change', event => {
+  amount = event.currentTarget.value;
+  createButton.addEventListener('click', onCreateBoxes);
+});
 
-const onInput = () => {
-  // console.log(event.currentTarget.value);
-  numberOfBox = numberInput.value;
-  console.log(numberOfBox, numberInput.value);
-  return numberOfBox;
-};
-
-numberInput.addEventListener('blur', onInput);
-
-console.log('nob', numberOfBox);
-let amount = 5;
-
-function onCreateBoxes(amount) {
+function onCreateBoxes() {
   const boxesArrey = [];
   for (let i = 0; i < amount; i += 1) {
     boxesArrey[i] = document.createElement('div');
     boxesArrey[i].style.width = `${30 + i * 10}px`;
     boxesArrey[i].style.height = `${30 + i * 10}px`;
     boxesArrey[i].style.backgroundColor = getRandomHexColor();
-    console.log(boxesArrey[i]);
   }
   boxes.append(...boxesArrey);
 }
-
-createButton.addEventListener('click', onCreateBoxes);
-console.log(boxes.children);
 
 function destroy() {
   boxes.innerHTML = '';
